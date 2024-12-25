@@ -1,45 +1,45 @@
 Business Checking
-	Overview|about.html
-		Business & Checking|about.html
-	Features & Benefits|about.html
-		No Monthly fees|about.html
-		High APY on Checking|about.html
-		Physical and virtual debit cards|about.html
-		Accounts Payable|about.html
-		International payments|about.html
-		Sub Accounts|about.html
-	Explore All features|about.html
-	See Plans and Pricing|about.html
+	Overview|about.html|A description for Business Checking.
+		Business & Checking|about.html|A description for Business Checking.
+	Features & Benefits|about.html|A description for Business Checking.
+		No Monthly fees|about.html|A description for Business Checking.
+		High APY on Checking|about.html|A description for Business Checking.
+		Physical and virtual debit cards|about.html|A description for Business Checking.
+		Accounts Payable|about.html|A description for Business Checking.
+		International payments|about.html|A description for Business Checking.
+		Sub Accounts|about.html|A description for Business Checking.
+	Explore All features|about.html|A description for Business Checking.
+	See Plans and Pricing|about.html|A description for Business Checking.
 Business Loans|about.html
-	Overview|about.html
-		Business Loans|about.html
+	Overview|about.html|A description for Business Checking.
+		Business Loans|about.html|A description for Business Checking.
 	Products|about.html
-		Line of Credit|about.html
-		Term Loan|about.html
-		SBA Loan|about.html
+		Line of Credit|about.html|A description for Business Checking.
+		Term Loan|about.html|A description for Business Checking.
+		SBA Loan|about.html|A description for Business Checking.
 Credit Card|about.html
-	Credit Card|about.html
+	Credit Card|about.html|A description for Business Checking.
 Solutions|about.html
-	Business type|about.html
-		Self-employed|about.html
-		Small business|about.html
-		Startups|about.html
+	Business type|about.html|A description for Business Checking.
+		Self-employed|about.html|A description for Business Checking.
+		Small business|about.html|A description for Business Checking.
+		Startups|about.html|A description for Business Checking.
 	Partners|about.html
-		Accounting firms|about.html
-		Accountant directory|about.html
+		Accounting firms|about.html|A description for Business Checking.
+		Accountant directory|about.html|A description for Business Checking.
 Resources|about.html
-	Overview|about.html
-		Small Business Resource Center|about.html
+	Overview|about.html|A description for Business Checking.
+		Small Business Resource Center|about.html|A description for Business Checking.
 	Resource Type|about.html
-		FAQs|about.html
-		Help Center|about.html
-		Accountant Directory|about.html
-		Blog|about.html
-		Guides|about.html
+		FAQs|about.html|A description for Business Checking.
+		Help Center|about.html|A description for Business Checking.
+		Accountant Directory|about.html|A description for Business Checking.
+		Blog|about.html|A description for Business Checking.
+		Guides|about.html|A description for Business Checking.
 Company|about.html
-	Overview|about.html
-		About Us|about.html
-	Explore|about.html
-		Careers|about.html
-		Press|about.html
-		Partners|about.html
+	Overview|about.html|A description for Business Checking.
+		About Us|about.html|A description for Business Checking.
+	Explore|about.html|A description for Business Checking.
+		Careers|about.html|A description for Business Checking.
+		Press|about.html|A description for Business Checking.
+		Partners|about.html|A description for Business Checking.
