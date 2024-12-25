@@ -1,71 +1,72 @@
-document.addEventListener("DOMContentLoaded", () => {
-    async function loadMenu(fileUrl, containerId) {
-        try {
-            // Fetch the menu file
-            const response = await fetch(fileUrl);
-            const text = await response.text();
+// Function to fetch and parse the menu file
+async function loadMenu(fileUrl, containerId) {
+    try {
+        const response = await fetch(fileUrl);
+        const text = await response.text();
 
-            // Split the file into lines
-            const lines = text.split("\n");
-            const menuContainer = document.getElementById(containerId);
+        // Split the file into lines
+        const lines = text.split("\n");
 
-            let currentMainItem = null;
-            let currentSubItem = null;
+        const menuContainer = document.getElementById(containerId);
 
-            lines.forEach((line) => {
-                const trimmedLine = line.trim();
-                const indentLevel = line.indexOf(trimmedLine);
+        // Create the table for the nested menu
+        const table = document.createElement("table");
+        table.classList.add("nested-menu-table");
 
-                if (trimmedLine) {
-                    // Parse line into display name, page name, and description
-                    const [displayName, pageName, description] = trimmedLine.split("|").map((item) => item.trim());
+        let currentMainRow = null;
+        let currentFirstLevelRow = null;
 
-                    if (indentLevel === 0) {
-                        // Main menu item
-                        currentMainItem = document.createElement("li");
-                        currentMainItem.classList.add("nav-item", "dropdown");
-                        currentMainItem.innerHTML = `
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">${displayName}</a>
-                            <div class="dropdown-menu">
-                                <table class="nested-table"></table>
-                            </div>
-                        `;
-                        menuContainer.appendChild(currentMainItem);
-                        currentSubItem = null;
-                    } else if (indentLevel === 1 && currentMainItem) {
-                        // First-level sub-item
-                        const table = currentMainItem.querySelector(".nested-table");
-                        const row = document.createElement("tr");
-                        row.innerHTML = `
-                            <td><a href="${pageName}">${displayName}</a></td>
-                            <td>${description || ''}</td>
-                        `;
-                        table.appendChild(row);
-                        currentSubItem = row;
-                    } else if (indentLevel === 2 && currentSubItem) {
-                        // Second-level sub-item
-                        const subTable = currentSubItem.querySelector(".nested-table") || document.createElement("table");
-                        subTable.classList.add("nested-table");
-                        if (!currentSubItem.contains(subTable)) {
-                            const cell = document.createElement("td");
-                            cell.colSpan = 2; // Ensure the subtable spans both columns
-                            cell.appendChild(subTable);
-                            currentSubItem.appendChild(cell);
-                        }
-                        const subRow = document.createElement("tr");
-                        subRow.innerHTML = `
-                            <td><a href="${pageName}">${displayName}</a></td>
-                            <td>${description || ''}</td>
-                        `;
-                        subTable.appendChild(subRow);
-                    }
+        lines.forEach((line) => {
+            const trimmedLine = line.trim();
+            const indentLevel = line.indexOf(trimmedLine);
+
+            if (trimmedLine) {
+                const [displayName, pageName, description] = trimmedLine
+                    .split("|")
+                    .map((item) => item.trim());
+
+                if (indentLevel === 0) {
+                    // Main menu item (level 0)
+                    const mainRow = document.createElement("tr");
+                    const mainCell = document.createElement("td");
+                    mainCell.colSpan = 3; // Span full width
+                    mainCell.innerHTML = `<a href="${pageName}" class="main-menu-item">${displayName}</a>`;
+                    mainRow.appendChild(mainCell);
+                    table.appendChild(mainRow);
+                    currentMainRow = mainRow;
+                } else if (indentLevel === 1 && currentMainRow) {
+                    // First-level item (level 1)
+                    const firstRow = document.createElement("tr");
+                    const firstCell = document.createElement("td");
+                    const descCell = document.createElement("td");
+                    firstCell.innerHTML = `<a href="${pageName}" class="first-level-item">${displayName}</a>`;
+                    descCell.textContent = description || "";
+                    firstRow.appendChild(firstCell);
+                    firstRow.appendChild(descCell);
+                    table.appendChild(firstRow);
+                    currentFirstLevelRow = firstRow;
+                } else if (indentLevel === 2 && currentFirstLevelRow) {
+                    // Second-level item (level 2)
+                    const secondRow = document.createElement("tr");
+                    const secondCell = document.createElement("td");
+                    const descCell = document.createElement("td");
+                    secondCell.innerHTML = `<a href="${pageName}" class="second-level-item">${displayName}</a>`;
+                    descCell.textContent = description || "";
+                    secondRow.appendChild(secondCell);
+                    secondRow.appendChild(descCell);
+                    table.appendChild(secondRow);
                 }
-            });
-        } catch (error) {
-            console.error("Error loading menu:", error);
-        }
-    }
+            }
+        });
 
-    // Load the menu file
+        // Append the table to the menu container
+        menuContainer.appendChild(table);
+    } catch (error) {
+        console.error("Error loading menu:", error);
+    }
+}
+
+// Load the menu file and generate the menu
+document.addEventListener("DOMContentLoaded", () => {
     loadMenu("menu.txt", "menu-container");
 });
