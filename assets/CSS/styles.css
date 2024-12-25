@@ -24,7 +24,7 @@ footer p {
     position: relative;
 }
 /* Show dropdown on hover */
-.nav-item.dropdown:hover .dropdown-menu {
+.nav-item .dropdown:hover .dropdown-menu {
     display: block;
 }
 
