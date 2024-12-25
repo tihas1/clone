@@ -1,42 +1,40 @@
-// Function to fetch and parse the menu file
 async function loadMenu(fileUrl, containerId) {
     try {
-        // Fetch the menu.txt file
         const response = await fetch(fileUrl);
         const text = await response.text();
 
         // Split the file into lines
         const lines = text.split("\n");
 
-        // Get the menu container
         const menuContainer = document.getElementById(containerId);
         let currentMainItem = null;
 
         lines.forEach((line) => {
-            // Trim the line to detect indentation
             const trimmedLine = line.trim();
             const indentLevel = line.indexOf(trimmedLine);
 
             if (trimmedLine) {
-                // Split the line into display name and page name
                 const [displayName, pageName] = trimmedLine.split("|").map((item) => item.trim());
 
                 if (indentLevel === 0) {
-                    // Main item (no indentation)
+                    // Main item
                     currentMainItem = document.createElement("li");
                     currentMainItem.classList.add("nav-item", "dropdown");
                     currentMainItem.innerHTML = `
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">${displayName}</a>
-                        <ul class="dropdown-menu">
-                        </ul>
+                        <a class="nav-link dropdown-toggle" href="#" role="button">${displayName}</a>
+                        <div class="dropdown-menu">
+                            <table class="nested-table"></table>
+                        </div>
                     `;
                     menuContainer.appendChild(currentMainItem);
                 } else if (indentLevel > 0 && currentMainItem) {
-                    // Sub-item (indented)
-                    const subMenu = currentMainItem.querySelector(".dropdown-menu");
-                    const subMenuItem = document.createElement("li");
-                    subMenuItem.innerHTML = `<a class="dropdown-item" href="${pageName}">${displayName}</a>`;
-                    subMenu.appendChild(subMenuItem);
+                    // Sub-item
+                    const table = currentMainItem.querySelector(".nested-table");
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td><a href="${pageName}">${displayName}</a></td>
+                    `;
+                    table.appendChild(row);
                 }
             }
         });
@@ -45,7 +43,7 @@ async function loadMenu(fileUrl, containerId) {
     }
 }
 
-// Load the menu file and generate the menu
+// Load the menu file
 document.addEventListener("DOMContentLoaded", () => {
-    loadMenu("menu.txt", "navbarNav");
+    loadMenu("menu.txt", "menu-container");
 });
