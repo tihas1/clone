@@ -19,3 +19,39 @@ footer {
 footer p {
     margin: 0;
 }
+.nav-item {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 300px;
+}
+
+.nav-item:hover .dropdown-menu,
+.nav-item:focus-within .dropdown-menu {
+    display: block;
+}
+
+.nested-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.nested-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.nested-table a {
+    text-decoration: none;
+    color: #333;
+}
+
+.nested-table a:hover {
+    color: #007bff;
+}
