@@ -3,26 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch(fileUrl);
             const text = await response.text();
-
-            // Split the menu file into lines
             const lines = text.split("\n");
-
-            // Get the menu container
             const menuContainer = document.getElementById(containerId);
 
             let currentMainItem = null;
+            let currentSubItem = null;
 
             lines.forEach((line) => {
-                // Trim the line to detect indentation
                 const trimmedLine = line.trim();
                 const indentLevel = line.indexOf(trimmedLine);
 
                 if (trimmedLine) {
-                    // Split into display name and page name
                     const [displayName, pageName] = trimmedLine.split("|").map((item) => item.trim());
 
                     if (indentLevel === 0) {
-                        // Create a main item
+                        // Main item
                         currentMainItem = document.createElement("li");
                         currentMainItem.classList.add("nav-item", "dropdown");
                         currentMainItem.innerHTML = `
@@ -32,14 +27,30 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                         `;
                         menuContainer.appendChild(currentMainItem);
-                    } else if (indentLevel > 0 && currentMainItem) {
-                        // Add sub-item to the current main item
+                        currentSubItem = null;
+                    } else if (indentLevel === 1 && currentMainItem) {
+                        // First-level sub-item
                         const table = currentMainItem.querySelector(".nested-table");
                         const row = document.createElement("tr");
                         row.innerHTML = `
                             <td><a href="${pageName}">${displayName}</a></td>
                         `;
                         table.appendChild(row);
+                        currentSubItem = row;
+                    } else if (indentLevel === 2 && currentSubItem) {
+                        // Second-level sub-item
+                        const subTable = currentSubItem.querySelector(".nested-table") || document.createElement("table");
+                        subTable.classList.add("nested-table");
+                        if (!currentSubItem.contains(subTable)) {
+                            const cell = document.createElement("td");
+                            cell.appendChild(subTable);
+                            currentSubItem.appendChild(cell);
+                        }
+                        const subRow = document.createElement("tr");
+                        subRow.innerHTML = `
+                            <td><a href="${pageName}">${displayName}</a></td>
+                        `;
+                        subTable.appendChild(subRow);
                     }
                 }
             });
@@ -48,6 +59,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Load the menu from the menu.txt file
     loadMenu("menu.txt", "menu-container");
 });
