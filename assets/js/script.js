@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     async function loadMenu(fileUrl, containerId) {
         try {
+            // Fetch the menu file
             const response = await fetch(fileUrl);
             const text = await response.text();
+
+            // Split the file into lines
             const lines = text.split("\n");
             const menuContainer = document.getElementById(containerId);
 
@@ -14,10 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 const indentLevel = line.indexOf(trimmedLine);
 
                 if (trimmedLine) {
-                    const [displayName, pageName] = trimmedLine.split("|").map((item) => item.trim());
+                    // Parse line into display name, page name, and description
+                    const [displayName, pageName, description] = trimmedLine.split("|").map((item) => item.trim());
 
                     if (indentLevel === 0) {
-                        // Main item
+                        // Main menu item
                         currentMainItem = document.createElement("li");
                         currentMainItem.classList.add("nav-item", "dropdown");
                         currentMainItem.innerHTML = `
@@ -34,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const row = document.createElement("tr");
                         row.innerHTML = `
                             <td><a href="${pageName}">${displayName}</a></td>
+                            <td>${description || ''}</td>
                         `;
                         table.appendChild(row);
                         currentSubItem = row;
@@ -43,12 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
                         subTable.classList.add("nested-table");
                         if (!currentSubItem.contains(subTable)) {
                             const cell = document.createElement("td");
+                            cell.colSpan = 2; // Ensure the subtable spans both columns
                             cell.appendChild(subTable);
                             currentSubItem.appendChild(cell);
                         }
                         const subRow = document.createElement("tr");
                         subRow.innerHTML = `
                             <td><a href="${pageName}">${displayName}</a></td>
+                            <td>${description || ''}</td>
                         `;
                         subTable.appendChild(subRow);
                     }
@@ -59,5 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Load the menu file
     loadMenu("menu.txt", "menu-container");
 });
