@@ -1,59 +1,71 @@
-async function loadMenu(fileUrl, containerId) {
-    try {
-        const response = await fetch(fileUrl);
-        const text = await response.text();
-        const lines = text.split("\n");
+document.addEventListener("DOMContentLoaded", () => {
+    async function loadMenu(fileUrl, containerId) {
+        try {
+            // Fetch the menu file
+            const response = await fetch(fileUrl);
+            const text = await response.text();
 
-        const menuContainer = document.getElementById(containerId);
+            // Split the file into lines
+            const lines = text.split("\n");
+            const menuContainer = document.getElementById(containerId);
 
-        // Create the table
-        const table = document.createElement("table");
-        table.classList.add("nested-menu-table");
+            let currentMainItem = null;
+            let currentSubItem = null;
 
-        lines.forEach((line) => {
-            const trimmedLine = line.trim();
-            const indentLevel = line.indexOf(trimmedLine);
+            lines.forEach((line) => {
+                const trimmedLine = line.trim();
+                const indentLevel = line.indexOf(trimmedLine);
 
-            if (trimmedLine) {
-                const [displayName, pageName, description] = trimmedLine.split("|").map((item) => item.trim());
+                if (trimmedLine) {
+                    // Parse line into display name, page name, and description
+                    const [displayName, pageName, description] = trimmedLine.split("|").map((item) => item.trim());
 
-                // Create a new row
-                const row = document.createElement("tr");
-
-                if (indentLevel === 0) {
-                    // Main menu item
-                    const mainCell = document.createElement("td");
-                    mainCell.colSpan = 2; // Spans two columns
-                    mainCell.classList.add("main-menu-item");
-                    mainCell.innerHTML = `<a href="${pageName}">${displayName}</a>`;
-                    row.appendChild(mainCell);
-                } else if (indentLevel === 1) {
-                    // First-level item
-                    const firstCell = document.createElement("td");
-                    firstCell.classList.add("first-level-item");
-                    firstCell.innerHTML = `<a href="${pageName}">${displayName}</a>`;
-                    const descCell = document.createElement("td");
-                    descCell.textContent = description || "";
-                    row.appendChild(firstCell);
-                    row.appendChild(descCell);
-                } else if (indentLevel === 2) {
-                    // Second-level item
-                    const secondCell = document.createElement("td");
-                    secondCell.classList.add("second-level-item");
-                    secondCell.innerHTML = `<a href="${pageName}">${displayName}</a>`;
-                    const descCell = document.createElement("td");
-                    descCell.textContent = description || "";
-                    row.appendChild(secondCell);
-                    row.appendChild(descCell);
+                    if (indentLevel === 0) {
+                        // Main menu item
+                        currentMainItem = document.createElement("li");
+                        currentMainItem.classList.add("nav-item", "dropdown");
+                        currentMainItem.innerHTML = `
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">${displayName}</a>
+                            <div class="dropdown-menu">
+                                <table class="nested-table"></table>
+                            </div>
+                        `;
+                        menuContainer.appendChild(currentMainItem);
+                        currentSubItem = null;
+                    } else if (indentLevel === 1 && currentMainItem) {
+                        // First-level sub-item
+                        const table = currentMainItem.querySelector(".nested-table");
+                        const row = document.createElement("tr");
+                        row.innerHTML = `
+                            <td><a href="${pageName}">${displayName}</a></td>
+                            <td>${description || ''}</td>
+                        `;
+                        table.appendChild(row);
+                        currentSubItem = row;
+                    } else if (indentLevel === 2 && currentSubItem) {
+                        // Second-level sub-item
+                        const subTable = currentSubItem.querySelector(".nested-table") || document.createElement("table");
+                        subTable.classList.add("nested-table");
+                        if (!currentSubItem.contains(subTable)) {
+                            const cell = document.createElement("td");
+                            cell.colSpan = 2; // Ensure the subtable spans both columns
+                            cell.appendChild(subTable);
+                            currentSubItem.appendChild(cell);
+                        }
+                        const subRow = document.createElement("tr");
+                        subRow.innerHTML = `
+                            <td><a href="${pageName}">${displayName}</a></td>
+                            <td>${description || ''}</td>
+                        `;
+                        subTable.appendChild(subRow);
+                    }
                 }
-
-                // Append the row to the table
-                table.appendChild(row);
-            }
-        });
-
-        menuContainer.appendChild(table);
-    } catch (error) {
-        console.error("Error loading menu:", error);
+            });
+        } catch (error) {
+            console.error("Error loading menu:", error);
+        }
     }
-}
+
+    // Load the menu file
+    loadMenu("menu.txt", "menu-container");
+});
