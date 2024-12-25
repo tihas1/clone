@@ -23,6 +23,10 @@ footer p {
 .navbar-nav .nav-item {
     position: relative;
 }
+/* Show dropdown on hover */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
 
 .navbar-nav .nav-link {
     font-size: 18px;
