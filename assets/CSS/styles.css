@@ -19,39 +19,53 @@ footer {
 footer p {
     margin: 0;
 }
-.nav-item {
+/* Styling for the main menu items */
+.navbar-nav .nav-item {
     position: relative;
 }
 
+.navbar-nav .nav-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Dropdown menu */
 .dropdown-menu {
-    display: none;
+    display: none; /* Initially hidden */
     position: absolute;
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    left: 0;
+    top: 100%;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
     z-index: 1000;
+    padding: 10px;
     width: 300px;
 }
 
-.nav-item:hover .dropdown-menu,
-.nav-item:focus-within .dropdown-menu {
+/* Show dropdown on hover */
+.nav-item:hover .dropdown-menu {
     display: block;
 }
 
-.nested-table table {
+/* Nested table inside dropdown */
+.nested-table {
     width: 100%;
     border-collapse: collapse;
 }
 
 .nested-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
 }
 
-.nested-table a {
+.nested-table td a {
     text-decoration: none;
-    color: #333;
+    color: #007bff;
 }
 
-.nested-table a:hover {
-    color: #007bff;
+.nested-table td a:hover {
+    text-decoration: underline;
+    color: #0056b3;
 }
