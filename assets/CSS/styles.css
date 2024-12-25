@@ -43,10 +43,7 @@ footer p {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Show dropdown on hover */
-.nav-item:hover .dropdown-menu {
-    display: block;
-}
+
 
 /* Nested Table */
 .nested-table {
