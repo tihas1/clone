@@ -1,4 +1,3 @@
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -48,70 +47,60 @@ footer p {
     display: block; /* Show dropdown on hover */
 }
 
-/* Nested Table Styling */
-.nested-table {
-    border-collapse: collapse;
+/* General Table Styles */
+.nested-menu-table {
     width: 100%;
-    margin: 0;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.nested-table td {
-    padding: 10px;
+.nested-menu-table td {
     border: 1px solid #ddd;
-    text-align: left;
+    padding: 10px;
     vertical-align: top;
-    background-color: #ffffff;
 }
 
-.nested-table tr:hover td {
-    background-color: #f1f1f1; /* Highlight row on hover */
+.nested-menu-table tr:hover td {
+    background-color: #f8f9fa; /* Highlight row on hover */
 }
 
-.nested-table td a {
+/* Styling for Different Levels */
+.main-menu-item {
+    font-weight: bold;
+    font-size: 1.2rem;
     text-decoration: none;
     color: #007bff;
-    font-weight: 600;
 }
 
-.nested-table td a:hover {
+.first-level-item,
+.second-level-item {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #333;
+}
+
+.first-level-item:hover,
+.second-level-item:hover {
+    color: #007bff;
     text-decoration: underline;
-    color: #0056b3;
 }
 
-/* Subtable Styling for Nested Items */
-.nested-table td table {
-    margin-top: 5px;
-    border: none;
-}
-
-.nested-table td table td {
-    border: none;
-    padding-left: 20px; /* Indent nested items */
-    font-size: 0.9rem; /* Slightly smaller text for nested items */
-}
-
-/* Active State for Menu Links */
-.nav-item .dropdown-menu a.active {
-    color: #ffffff;
-    background-color: #007bff;
-    border-radius: 3px;
-    padding: 5px;
-}
-
-/* Mobile Styles for Collapsed Navbar */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .nav-item .dropdown-menu {
-        position: static;
+    .nested-menu-table {
         display: block;
-        box-shadow: none;
-        border: none;
+        border: 0;
     }
 
-    .nested-table td {
+    .nested-menu-table tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .nested-menu-table td {
         display: block;
         width: 100%;
-        padding: 10px 0;
-        border: none;
+        border: 0;
+        padding: 5px 0;
     }
 }
-
