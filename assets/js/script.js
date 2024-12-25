@@ -6,11 +6,9 @@ async function loadMenu(fileUrl, containerId) {
 
         const menuContainer = document.getElementById(containerId);
 
-        // Create a table
+        // Create the table
         const table = document.createElement("table");
         table.classList.add("nested-menu-table");
-
-        let currentMainRow = null;
 
         lines.forEach((line) => {
             const trimmedLine = line.trim();
@@ -19,39 +17,38 @@ async function loadMenu(fileUrl, containerId) {
             if (trimmedLine) {
                 const [displayName, pageName, description] = trimmedLine.split("|").map((item) => item.trim());
 
+                // Create a new row
+                const row = document.createElement("tr");
+
                 if (indentLevel === 0) {
                     // Main menu item
-                    const mainRow = document.createElement("tr");
                     const mainCell = document.createElement("td");
-                    mainCell.colSpan = 3; // Spans all columns
+                    mainCell.colSpan = 2; // Spans two columns
                     mainCell.classList.add("main-menu-item");
                     mainCell.innerHTML = `<a href="${pageName}">${displayName}</a>`;
-                    mainRow.appendChild(mainCell);
-                    table.appendChild(mainRow);
-                    currentMainRow = mainRow;
-                } else if (indentLevel === 1 && currentMainRow) {
+                    row.appendChild(mainCell);
+                } else if (indentLevel === 1) {
                     // First-level item
-                    const firstRow = document.createElement("tr");
                     const firstCell = document.createElement("td");
-                    const descCell = document.createElement("td");
                     firstCell.classList.add("first-level-item");
                     firstCell.innerHTML = `<a href="${pageName}">${displayName}</a>`;
+                    const descCell = document.createElement("td");
                     descCell.textContent = description || "";
-                    firstRow.appendChild(firstCell);
-                    firstRow.appendChild(descCell);
-                    table.appendChild(firstRow);
+                    row.appendChild(firstCell);
+                    row.appendChild(descCell);
                 } else if (indentLevel === 2) {
                     // Second-level item
-                    const secondRow = document.createElement("tr");
                     const secondCell = document.createElement("td");
-                    const descCell = document.createElement("td");
                     secondCell.classList.add("second-level-item");
                     secondCell.innerHTML = `<a href="${pageName}">${displayName}</a>`;
+                    const descCell = document.createElement("td");
                     descCell.textContent = description || "";
-                    secondRow.appendChild(secondCell);
-                    secondRow.appendChild(descCell);
-                    table.appendChild(secondRow);
+                    row.appendChild(secondCell);
+                    row.appendChild(descCell);
                 }
+
+                // Append the row to the table
+                table.appendChild(row);
             }
         });
 
@@ -60,7 +57,3 @@ async function loadMenu(fileUrl, containerId) {
         console.error("Error loading menu:", error);
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadMenu("menu.txt", "menu-container");
-});
