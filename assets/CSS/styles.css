@@ -48,57 +48,54 @@ footer p {
 }
 
 /* General Table Styles */
-/* General Table Styles */
 .nested-menu-table {
     width: 100%;
     border-collapse: collapse;
-    table-layout: auto;
     margin-top: 20px;
+    table-layout: auto;
 }
 
 .nested-menu-table td {
     border: 1px solid #ddd;
     padding: 10px;
-    text-align: left;
     vertical-align: top;
+    text-align: left;
 }
 
 .main-menu-item {
     font-weight: bold;
     font-size: 1.2rem;
     background-color: #f1f1f1;
-    text-align: left;
-    cursor: pointer;
 }
 
 .first-level-item {
     padding-left: 20px;
-    background-color: #e6e6e6;
     font-size: 1rem;
-    text-align: left;
 }
 
 .second-level-item {
     padding-left: 40px;
-    background-color: #dcdcdc;
     font-size: 0.9rem;
-    text-align: left;
 }
 
-/* Hover Effects */
-.main-menu-item:hover,
-.first-level-item:hover,
-.second-level-item:hover {
-    background-color: #cce5ff;
-    color: #0056b3;
+/* Highlight rows on hover */
+.nested-menu-table tr:hover td {
+    background-color: #f8f9fa;
 }
 
-/* Responsive Design */
+/* Responsive Styles */
 @media (max-width: 768px) {
+    .nested-menu-table {
+        display: block;
+    }
+
+    .nested-menu-table tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+
     .nested-menu-table td {
         display: block;
         width: 100%;
-        border: 0;
-        padding: 5px;
     }
 }
