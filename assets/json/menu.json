@@ -1,0 +1,259 @@
+[
+    {
+        "name": "Business Checking",
+        "link": "about.html",
+        "description": "A description for Business Checking.",
+        "subItems": [
+            {
+                "name": "Overview",
+                "link": "about.html",
+                "description": "A description for Business Checking.",
+                "subItems": [
+                    {
+                        "name": "Business & Checking",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    }
+                ]
+            },
+            {
+                "name": "Features & Benefits",
+                "link": "about.html",
+                "description": "A description for Business Checking.",
+                "subItems": [
+                    {
+                        "name": "No Monthly fees",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "High APY on Checking",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Physical and virtual debit cards",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Accounts Payable",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "International payments",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Sub Accounts",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    }
+                ]
+            },
+            {
+                "name": "Explore All features",
+                "link": "about.html",
+                "description": "A description for Business Checking."
+            },
+            {
+                "name": "See Plans and Pricing",
+                "link": "about.html",
+                "description": "A description for Business Checking."
+            }
+        ]
+    },
+    {
+        "name": "Business Loans",
+        "link": "about.html",
+        "description": "",
+        "subItems": [
+            {
+                "name": "Overview",
+                "link": "about.html",
+                "description": "A description for Business Checking.",
+                "subItems": [
+                    {
+                        "name": "Business Loans",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    }
+                ]
+            },
+            {
+                "name": "Products",
+                "link": "about.html",
+                "description": "",
+                "subItems": [
+                    {
+                        "name": "Line of Credit",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Term Loan",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "SBA Loan",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Credit Card",
+        "link": "about.html",
+        "description": "A description for Business Checking.",
+        "subItems": [
+            {
+                "name": "Credit Card",
+                "link": "about.html",
+                "description": "A description for Business Checking."
+            }
+        ]
+    },
+    {
+        "name": "Solutions",
+        "link": "about.html",
+        "description": "A description for Business Checking.",
+        "subItems": [
+            {
+                "name": "Business type",
+                "link": "about.html",
+                "description": "A description for Business Checking.",
+                "subItems": [
+                    {
+                        "name": "Self-employed",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Small business",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Startups",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Partners",
+        "link": "about.html",
+        "description": "",
+        "subItems": [
+            {
+                "name": "Accounting firms",
+                "link": "about.html",
+                "description": "A description for Business Checking."
+            },
+            {
+                "name": "Accountant directory",
+                "link": "about.html",
+                "description": "A description for Business Checking."
+            }
+        ]
+    },
+    {
+        "name": "Resources",
+        "link": "about.html",
+        "description": "",
+        "subItems": [
+            {
+                "name": "Overview",
+                "link": "about.html",
+                "description": "A description for Business Checking.",
+                "subItems": [
+                    {
+                        "name": "Small Business Resource Center",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    }
+                ]
+            },
+            {
+                "name": "Resource Type",
+                "link": "about.html",
+                "description": "",
+                "subItems": [
+                    {
+                        "name": "FAQs",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Help Center",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Accountant Directory",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Blog",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Guides",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Company",
+        "link": "about.html",
+        "description": "",
+        "subItems": [
+            {
+                "name": "Overview",
+                "link": "about.html",
+                "description": "A description for Business Checking.",
+                "subItems": [
+                    {
+                        "name": "About Us",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    }
+                ]
+            },
+            {
+                "name": "Explore",
+                "link": "about.html",
+                "description": "A description for Business Checking.",
+                "subItems": [
+                    {
+                        "name": "Careers",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Press",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    },
+                    {
+                        "name": "Partners",
+                        "link": "about.html",
+                        "description": "A description for Business Checking."
+                    }
+                ]
+            }
+        ]
+    }
+]
