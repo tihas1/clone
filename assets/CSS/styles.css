@@ -34,6 +34,8 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
     min-width: 100%; /* Ensure it takes the full width of the navbar */
+    max-height: 300px; /* Adjust this value as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .nav-item:hover .dropdown-menu,
