@@ -19,17 +19,21 @@ footer p {
     margin: 0;
 }
 
+body {
+    font-family: Arial, sans-serif;
+}
+
 .nav-item {
     position: relative;
 }
 
 .dropdown-menu {
     display: none; /* Hidden by default */
-    position: absolute; 
+    position: absolute;
     background: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    width: 300px; /* Adjust as necessary */
+    min-width: 100%; /* Ensure it takes the full width of the navbar */
 }
 
 .nav-item:hover .dropdown-menu,
@@ -37,44 +41,38 @@ footer p {
     display: block; /* Show on hover or focus */
 }
 
-.nested-menu {
-    padding-left: 0; /* Optional to remove unnecessary padding */
-    list-style: none; /* Remove bullet points */
+.row {
+    display: flex; /* Use flexbox for layout */
 }
 
-.nested-menu li {
-    position: relative; /* For positioning nested items correctly */
+.nest-item {
+    padding: 10px; /* Space in columns */
 }
 
-/* Optional styles for nested tables */
-.nested-table table {
-    width: 100%;
-    border-collapse: collapse;
+.menu-box {
+    border: 1px solid #ddd; /* Light border around each box */
+    padding: 10px; /* Padding inside the box */
+    margin-bottom: 10px; /* Space between boxes */
+    background-color: #f9f9f9; /* Light background color for the box */
 }
 
-.nested-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
+h6 {
+    margin: 0; /* Remove margin from headings */
 }
 
-.nested-table a {
-    text-decoration: none;
-    color: #333;
+hr {
+    margin: 10px 0; /* Space above and below the line */
 }
 
-.nested-table a:hover {
-    color: #007bff; /* Bootstrap link color */
-}
-.caret {
-    display: inline-block;
-    margin-left: 5px;
-    border: solid transparent; /* CSS trick to create a triangle pointer */
-    border-width: 5px 4px 0;
-    border-top-color: #000; /* Arrow color */
+ul {
+    padding-left: 0; /* Remove default padding */
 }
 
-.description-item {
-    padding: 5px 10px;
-    color: #555; /* Light grey for description */
-    font-size: 0.9em; /* Slightly smaller text for descriptions */
+li {
+    list-style-type: none; /* Remove bullet points from list */
+}
+
+.text-muted {
+    color: #555; /* Lighter color for descriptions */
+    font-size: 0.9em; /* Smaller font for descriptions */
 }

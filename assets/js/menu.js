@@ -4,47 +4,45 @@ document.addEventListener("DOMContentLoaded", () => {
             const response = await fetch(fileUrl);
             const menuData = await response.json(); // Parse JSON directly
 
-            const menuContainer = document.querySelector('.navbar-nav');
+            const menuContainer = document.getElementById('menu-container');
 
-            // Recursive function to create menu items
+            // Create menu items
             const createMenu = (menu, container) => {
                 menu.forEach(item => {
                     const mainItem = document.createElement('li');
                     mainItem.className = 'nav-item dropdown';
                     mainItem.innerHTML = `
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            ${item.name} <span class="caret"></span>
+                            ${item.name}
                         </a>
                         <div class="dropdown-menu">
-                            <ul class="nested-menu"></ul>
+                            <div class="row"> <!-- Use Bootstrap row to manage layout -->
+                                ${item.subItems.map(subItem => `
+                                <div class="col nest-item"> <!-- Box for each sub item -->
+                                    <div class="menu-box">
+                                        <h6>${subItem.name}</h6>
+                                        <hr>
+                                        <p>${subItem.description}</p>
+                                        <ul>
+                                            ${subItem.subItems.map(level3Item => `
+                                                <li>${level3Item.name} - ${level3Item.description}</li>
+                                            `).join('')}
+                                        </ul>
+                                    </div>
+                                </div>
+                                `).join('')}
+                            </div>
                         </div>
                     `;
-                    const nestedMenu = mainItem.querySelector('.nested-menu');
-
-                    // Recursively add subItems if they exist
-                    if (item.subItems && item.subItems.length) {
-                        createMenu(item.subItems, nestedMenu);
-                    }
-
-                    // Add description below the main item
-                    if (item.description) {
-                        const descriptionItem = document.createElement('li');
-                        descriptionItem.className = 'dropdown-item description-item text-muted';
-                        descriptionItem.textContent = item.description; // Display description
-                        nestedMenu.appendChild(descriptionItem);
-                    }
-
                     container.appendChild(mainItem);
                 });
             };
 
-            // Call createMenu to build the menu structure
             createMenu(menuData, menuContainer);
         } catch (error) {
             console.error("Error loading menu:", error);
         }
     }
 
-    // Load the menu JSON file from assets/json/menu.json
-    loadMenu("assets/json/menu.json");
+    loadMenu("assets/json/menu.json"); // Ensure the path is correct
 });
