@@ -2,8 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadMenu(fileUrl) {
         try {
             const response = await fetch(fileUrl);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
             const menuData = await response.json(); // Parse JSON directly
-
+            
             const menuContainer = document.getElementById('menu-container');
 
             // Create menu items
@@ -17,20 +20,20 @@ document.addEventListener("DOMContentLoaded", () => {
                         </a>
                         <div class="dropdown-menu">
                             <div class="row"> <!-- Use Bootstrap row to manage layout -->
-                                ${item.subItems.map(subItem => `
-                                <div class="col nest-item"> <!-- Box for each sub item -->
+                                ${item.subItems && Array.isArray(item.subItems) ? item.subItems.map(subItem => `
+                                <div class="col nest-item"> <!-- Box for each sub-item -->
                                     <div class="menu-box">
                                         <h6>${subItem.name}</h6>
                                         <hr>
                                         <p>${subItem.description}</p>
                                         <ul>
-                                            ${subItem.subItems.map(level3Item => `
+                                            ${subItem.subItems && Array.isArray(subItem.subItems) ? subItem.subItems.map(level3Item => `
                                                 <li>${level3Item.name} - ${level3Item.description}</li>
-                                            `).join('')}
+                                            `).join('') : ''}
                                         </ul>
                                     </div>
                                 </div>
-                                `).join('')}
+                                `).join('') : '<p>No sub-items available</p>'}
                             </div>
                         </div>
                     `;
