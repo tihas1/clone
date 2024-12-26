@@ -65,3 +65,16 @@ footer p {
 .nested-table a:hover {
     color: #007bff; /* Bootstrap link color */
 }
+.caret {
+    display: inline-block;
+    margin-left: 5px;
+    border: solid transparent; /* CSS trick to create a triangle pointer */
+    border-width: 5px 4px 0;
+    border-top-color: #000; /* Arrow color */
+}
+
+.description-item {
+    padding: 5px 10px;
+    color: #555; /* Light grey for description */
+    font-size: 0.9em; /* Slightly smaller text for descriptions */
+}
