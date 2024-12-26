@@ -33,6 +33,7 @@ body {
     background: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    width: auto; /* Set to auto to let it size based on content */
     min-width: 100%; /* Ensure it takes the full width of the navbar */
     max-height: 300px; /* Adjust this value as needed */
     overflow-y: auto; /* Enable vertical scrolling */
